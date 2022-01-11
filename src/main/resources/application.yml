@@ -1,0 +1,19 @@
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    url: jdbc:mysql://localhost/plan?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: orcl
+  mvc: 
+    view: 
+     prefix: /WEB-INF/views/
+     suffix: .jsp
+  devtools:
+    livereload:
+     enabled: true
+mybatis:
+  mapper-locations: sqlmap/**/*_SQL.xml

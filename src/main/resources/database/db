@@ -1,0 +1,91 @@
+CREATE TABLE user(
+	user_no int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	email varchar(200) NOT NULL COMMENT '회원 이메일',
+	password varchar(200) NOT NULL COMMENT '회원 비밀번호',
+	nm varchar(200) COMMENT '회원 이름',
+	tel varchar(200) COMMENT '회원 연락처',
+    address varchar(200) COMMENT '회원 주소',
+	recommender int(10) COMMENT '추천인',
+    social varchar(100) COMMENT '소셜로그인인증업체',
+	notice_yn char(1) COMMENT '문자1/이메일3/전체동의5',
+	auth varchar(100) COMMENT '유저 권한',
+	user_rank varchar(100) COMMENT '고객 등급',
+	point varchar(100) COMMENT '포인트',
+	red_dt date COMMENT '등록일',
+	modi_dt date COMMENT '수정일'
+) comment '회원 정보';
+
+CREATE TABLE shipping_address(
+	shipping_no int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_no varchar(10) NOT NULL COMMENT '회원번호',
+	tel varchar(200) COMMENT '회원 연락처',
+	msg longtext COMMENT '배송메시지',
+    base_yn date COMMENT '기본배송지여부',
+	red_dt date COMMENT '등록일',
+	modi_dt date COMMENT '수정일'
+) comment '회원 배송지';
+
+CREATE TABLE bbs_borad(
+	bbs_no int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    grp_no varchar(10) COMMENT '부모글번호',
+    grp_ord varchar(10) COMMENT '그룳내순서',
+    depth varchar(10) COMMENT '답글레벨',
+    user_no int(10) NOT NULL COMMENT '작성자',
+    title varchar(200) COMMENT '제목',
+    content longtext COMMENT '내용',
+    read_cnt varchar(10) COMMENT '조회수',
+    bbs_cd varchar(10) COMMENT '게시판 코드',
+	red_dt date COMMENT '등록일',
+	modi_dt date COMMENT '수정일'
+) comment '공통 게시판';
+
+CREATE TABLE search_recommend(
+	search_no int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_no varchar(10) COMMENT '회원번호',
+	word longtext COMMENT '검색어',
+	search_cnt varchar(10) COMMENT '검색횟수',
+	red_dt date COMMENT '등록일'
+) comment '추천 검색어';
+
+CREATE TABLE image_file(
+	image_no int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,	
+    keyword varchar(10) NOT NULL COMMENT '조회값(게시판,상품,유저)',
+	file_path date COMMENT '파일경로',
+	red_dt date COMMENT '등록일',
+	modi_dt date COMMENT '수정일'
+) comment '이미지 경로';
+
+CREATE TABLE product(
+	product_no int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title varchar(200) COMMENT '상품이름',
+    content longtext COMMENT '상품설명',
+    category varchar(10) COMMENT '카테고리',
+	p_count varchar(10) COMMENT '상품개수',
+    p_prize varchar(100) COMMENT '상품가격',
+    delivery_prize varchar(100) COMMENT '배송비',
+    p_type varchar(100) COMMENT '상품선택',
+    read_cnt varchar(10) COMMENT '조회수',
+	red_dt date COMMENT '등록일',
+	modi_dt date COMMENT '수정일'
+) comment '상품정보';
+
+CREATE TABLE review(
+	review_no int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    product_no varchar(10) NOT NULL COMMENT '상품번호',
+    user_no varchar(10) NOT NULL COMMENT '회원번호',
+    title varchar(200) COMMENT '제목',
+    content longtext COMMENT '내용',
+	star varchar(10) COMMENT '상품개수',
+    read_cnt varchar(10) COMMENT '조회수',
+	red_dt date COMMENT '등록일',
+	modi_dt date COMMENT '수정일'
+) comment '상품리뷰';
+
+CREATE TABLE my_product(
+	zzim_no int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    product_no varchar(10) NOT NULL COMMENT '상품번호',
+    user_no varchar(10) NOT NULL COMMENT '회원번호',
+    item_type varchar(10) COMMENT '항목타입',
+	red_dt date COMMENT '등록일',
+	modi_dt date COMMENT '수정일'
+) comment '관심상품/장바구니/구매목록';
