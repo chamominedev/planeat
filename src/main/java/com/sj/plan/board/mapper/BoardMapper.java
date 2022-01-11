@@ -10,4 +10,5 @@ public interface BoardMapper {
 	BoardVo select(BoardVo boardVo);
 	BoardVo update(BoardVo boardVo);
 	BoardVo delete(BoardVo boardVo);
+	
 }
